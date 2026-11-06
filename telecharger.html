@@ -1,0 +1,65 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><title>Installer Soleïa</title>
+<style>
+html{background:#15131A}
+body{font-size:20px}
+main{padding-top:36px;text-align:center}
+h1{font-size:36px}
+.step{background:var(--surface);border-radius:24px;padding:22px 20px;margin:18px 0;text-align:left}
+.num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:20px;background:var(--peach);color:#2B2836;font:600 22px Fredoka,system-ui;margin-right:10px;flex:none}
+.head{display:flex;align-items:center;font:600 24px/1.25 Fredoka,system-ui;color:var(--text)}
+.step p{margin:12px 0 0;font-size:19px;color:#E6E0EE}
+.btn{display:block;margin-top:16px;padding:20px 16px;border-radius:999px;background:var(--peach);color:#2B2836;text-decoration:none;text-align:center;font:800 22px Nunito,system-ui}
+.btn.alt{background:#2E2A38;color:var(--text)}
+.done{opacity:.55}
+.hide{display:none}
+.other{margin-top:28px;font-size:16px}
+b{color:var(--peach)}
+</style></head><body><main>
+<img class="logo" src="etoile.png" alt="">
+<h1>Installer Soleïa</h1>
+<p class="muted" style="font-size:18px">L'album privé de la famille</p>
+
+<!-- iPhone -->
+<section id="ios" class="hide">
+  <div class="step"><div class="head"><span class="num">1</span>Installer l'application</div>
+    <a class="btn" href="https://apps.apple.com/app/id6826727475">Installer Soleïa</a>
+    <p>Puis touchez <b>Obtenir</b>.</p></div>
+  <div class="step"><div class="head"><span class="num">2</span>Ouvrir Soleïa</div>
+    <p>Touchez <b>J'ai reçu une invitation</b>, puis suivez les étapes.</p>
+    <p class="muted">Vous êtes les parents ? Touchez plutôt <b>Je suis parent</b>.</p></div>
+</section>
+
+<!-- Android -->
+<section id="android" class="hide">
+  <div class="step" id="s1"><div class="head"><span class="num">1</span>Rejoindre la famille</div>
+    <a class="btn" id="b1" href="https://groups.google.com/g/famille-solea" target="_blank" rel="noopener">Rejoindre la famille</a>
+    <p>Touchez <b>Rejoindre le groupe</b>, puis revenez sur cette page.</p></div>
+  <div class="step"><div class="head"><span class="num">2</span>Installer l'application</div>
+    <a class="btn" href="https://play.google.com/apps/testing/soleia.app">Installer Soleïa</a>
+    <p>Touchez <b>Devenir testeur</b>, puis <b>Télécharger sur Google Play</b>, puis <b>Installer</b>.</p></div>
+  <div class="step"><div class="head"><span class="num">3</span>Ouvrir Soleïa</div>
+    <p>Touchez <b>J'ai reçu une invitation</b>, puis suivez les étapes.</p>
+    <p class="muted">Vous êtes les parents ? Touchez plutôt <b>Je suis parent</b>.</p></div>
+  <p class="muted">« Introuvable » sur Google Play ? Attendez 5 minutes et réessayez.</p>
+</section>
+
+<!-- Ordinateur ou téléphone inconnu -->
+<section id="other" class="hide">
+  <div class="step"><div class="head">Ouvrez cette page sur votre téléphone</div>
+    <p>Soleïa s'installe sur iPhone et sur Android. Scannez le QR code avec l'appareil photo de votre téléphone.</p>
+    <a class="btn alt" href="#" onclick="show('ios');return false">J'ai un iPhone</a>
+    <a class="btn alt" href="#" onclick="show('android');return false">J'ai un Android</a></div>
+</section>
+
+<p class="other muted" id="switch"><a href="#" onclick="show(cur==='ios'?'android':'ios');return false" id="swl"></a></p>
+<p class="muted" style="font-size:15px">Besoin d'aide ? <a href="index.html">Aide</a> · <a href="mailto:contact@studio211.fr">contact@studio211.fr</a></p>
+</main>
+<script>
+var cur;
+function show(k){cur=k;['ios','android','other'].forEach(function(x){document.getElementById(x).classList.toggle('hide',x!==k)});
+var l=document.getElementById('swl');l.textContent=k==='ios'?"Vous avez un Android ? Cliquez ici":k==='android'?"Vous avez un iPhone ? Cliquez ici":"";}
+var ua=navigator.userAgent||'';
+show(/Android/i.test(ua)?'android':/iPhone|iPod/.test(ua)?'ios':'other');
+document.getElementById('b1').addEventListener('click',function(){document.getElementById('s1').classList.add('done')});
+</script>
+</body></html>
